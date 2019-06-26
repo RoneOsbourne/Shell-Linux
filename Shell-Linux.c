@@ -41,7 +41,7 @@ dentro do fork chamar o comando execvp, que executará o comando e aguardará at
 int main(void){
 
 
-
+    printf("a");
 
     return 0;
 }
