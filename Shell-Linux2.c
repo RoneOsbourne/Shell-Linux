@@ -33,15 +33,15 @@ dentro do fork chamar o comando execvp, que executará o comando e aguardará at
 #include<stdlib.h>
 #include<unistd.h>
 #include<sys/types.h>
-//#include<sys/wait.h>
-//#include<readline/readline.h>
-//#include<readline/history.h>
+#include<sys/wait.h>
+#include<readline/readline.h>
+#include<readline/history.h>
 #define CLEAR() printf("\033[H\033[J")
 
 
 int main(){
   
-    char* comando[];
+    char *comando[];
     char *linha;  
       
     do{
@@ -54,10 +54,26 @@ int main(){
 
         }else if(strcmp(comando, "help") == 0){
             printf("\t*** COMANDOS VALIDOS ***\n");
-            printf("\n*** hello ***\nls\nhelp\nls\ncd\nComandos padrão Sistema Linux");
+            printf("\nhello\nhelp\nls\ncd\nComandos padrão Sistema Linux");
         /*}else if(strcmp(comando, "hello" && "help" && "exit") == 1){
             printf("\t ---------------- COMANDO INVALIDO ----------------\n");*/
+        
+        }if(comando == ls){
+            fork();
+            system("ls");
+            exec (comando);
+
+        }if(comando == cd){
+            fork();
+            system("cd");
+            exec (comando);
+
+        }if(comando == " "{
+            fork();
+            system("man");
+            exec (comando);
         }
+
     }while(strcmp(comando, "exit") != 0);
     
 }

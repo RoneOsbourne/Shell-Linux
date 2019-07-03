@@ -33,16 +33,18 @@ dentro do fork chamar o comando execvp, que executarÃ¡ o comando e aguardarÃ¡ at
 #include<stdlib.h>
 #include<unistd.h>
 #include<sys/types.h>
-//#include<sys/wait.h>
-//#include<readline/readline.h>
-//#include<readline/history.h>
+#include<sys/wait.h>
+#include<readline/readline.h>
+#include<readline/history.h>
 #define CLEAR() printf("\033[H\033[J")
 
 
 int main(){
   
-    char* comando[];
-    char *linha;  
+    char *comando[];
+    char *linha;
+	char *diretorio;
+	char s[100];  
       
     do{
         linha = readline(" <o> ");
@@ -53,12 +55,33 @@ int main(){
             printf("Ola - %s - seja Bem Vindo a Minha Shell-Linux\n", getenv("USER"));
 
         }else if(strcmp(comando, "help") == 0){
-            printf("\t*** COMANDOS VALIDOS ***\n");
-            printf("\n*** hello ***\nls\nhelp\nls\ncd\nComandos padrÃ£o Sistema Linux");
+        	system ("clear");
+            printf("-------------------SHELL LINUX = BY RONALDO FRANCE-------------------\n");
+            printf("Breves instruções para uso dos comando:\n");
+            printf("1 - Digite 'hello' para saudação inicial\n");
+            printf("2 - Digite 'help' para auxilio\n");
+            printf("3 - Digite 'exit' para sair do programa");
+            printf("4 - Digite o comando 'cd' para navegar entre os diretorios\n");
+            printf("\n\n-------------------OBRIGADO E TENHA UMA OTIMA EXPERIENCIA-------------------\n\n");
         /*}else if(strcmp(comando, "hello" && "help" && "exit") == 1){
             printf("\t ---------------- COMANDO INVALIDO ----------------\n");*/
-        }
+        
+    	}else if(strcmp(comando, "exit") == 0){
+    		system("clear");
+    		printf("Saindo da Aplicação\n");
+    		exit (0);
+    	
+    	}else if(strcmp(comando, "cd") == 0){
+    		char *diretorio = (comando + 4);
+    		chdir(s);
+		}else{
+			system (comando);
+		}
+    		
+    		
+		}
+    	
     }while(strcmp(comando, "exit") != 0);
     
-}
+
     
